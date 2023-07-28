@@ -1,0 +1,13 @@
+{% extends "account/email/base_message.txt" %}
+{% load account %}
+{% load i18n %}
+
+{% block content %}{% autoescape off %}{% user_display user as user_display %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+You have received this message, because user {{ user_display }} has mentioned this email when registered on the website {{ site_domain }}.
+
+To confirm the registration please follow the link {{ activate_url }}
+
+Have a good day ahead.
+{% endblocktrans %}{% endautoescape %}
+{% endblock %}
